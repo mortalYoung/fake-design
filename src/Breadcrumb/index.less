@@ -1,0 +1,25 @@
+@prefix: fake-breadcrumb;
+
+.@{prefix} {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.85);
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  list-style: none;
+  // 用于控制OpenType字体中的高级印刷功能。
+  font-feature-settings: 'tnum';
+  color: rgba(0, 0, 0, 0.45);
+  font-size: 14px;
+}
+
+.@{prefix}-separator {
+  margin: 0 8px;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+// 设置最后一个 Breadcrumb.Item 的 separator 不见
+.@{prefix} > span:last-child .@{prefix}-separator {
+  display: none;
+}

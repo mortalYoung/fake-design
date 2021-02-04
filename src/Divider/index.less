@@ -1,0 +1,93 @@
+@prefix: fake-divider;
+
+.@{prefix} {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.85);
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  list-style: none;
+  font-feature-settings: 'tnum';
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+// [start]: 水平垂直样式
+.@{prefix}-horizontal {
+  display: flex;
+  clear: both;
+  width: 100%;
+  min-width: 100%;
+  margin: 24px 0;
+}
+.@{prefix}-vertical {
+  position: relative;
+  top: -0.06em;
+  display: inline-block;
+  height: 0.9em;
+  margin: 0 8px;
+  vertical-align: middle;
+  border-top: 0;
+  border-left: 1px solid rgba(0, 0, 0, 0.06);
+}
+// [end]: 水平垂直样式
+
+// [start]: 文字分割线
+.@{prefix}-with-text {
+  border-top: 0;
+  border-top-color: rgba(0, 0, 0, 0.06);
+  font-weight: 500;
+  font-size: 16px;
+  white-space: nowrap;
+  text-align: center;
+
+  &::after,
+  &::before {
+    position: relative;
+    top: 50%;
+    width: 50%;
+    border-top: 1px solid transparent;
+    border-top-color: inherit;
+    border-bottom: 0;
+    transform: translateY(50%);
+    content: '';
+  }
+}
+// [end]: 文字分割线
+
+// [start]: 文字分割线文字位置
+.@{prefix}-with-text-left {
+  &::before {
+    width: 5%;
+  }
+
+  &::after {
+    width: 95%;
+  }
+}
+.@{prefix}-with-text-right {
+  &::before {
+    width: 95%;
+  }
+
+  &::after {
+    width: 5%;
+  }
+}
+// [end]: 文字分割线文字位置
+
+.@{prefix}-inner-text {
+  display: inline-block;
+  padding: 0 1em;
+}
+
+.@{prefix}-dashed {
+  border: dashed rgba(0, 0, 0, 0.06);
+  border-width: 1px 0 0;
+}
+
+.@{prefix}-plain {
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 400;
+  font-size: 14px;
+}

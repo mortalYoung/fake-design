@@ -1,0 +1,312 @@
+@prefix: fake-btn;
+
+@default-color: rgba(0, 0, 0, 0.85);
+@primary-color: #1890ff;
+@hover-color: #40a9ff;
+@acitve-color: #096dd9;
+@dash-color: #d9d9d9;
+@danger-color: #ff4d4f;
+/* -------------------- 👆:color;👇:height --------------------*/
+@default-height: 32px;
+@large-height: 40px;
+@small-height: 24px;
+@icon-only-size: 32px;
+
+// 默认 button 的样式
+.@{prefix} {
+  line-height: 1.5715;
+  position: relative;
+  display: inline-block;
+  font-weight: 400;
+  white-space: nowrap;
+  text-align: center;
+  background-image: none;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  // 阻止文本被选中
+  user-select: none;
+  // 这个应该是对触摸屏用户的优化
+  touch-action: manipulation;
+  height: @default-height;
+  padding: 4px 15px;
+  font-size: 14px;
+  border-radius: 2px;
+  color: @default-color;
+  background: #fff;
+  border: 1px solid @dash-color;
+  outline: 0;
+
+  &:hover,
+  &:focus {
+    color: @hover-color;
+    border-color: @hover-color;
+  }
+
+  &:active {
+    color: @acitve-color;
+    border-color: @acitve-color;
+  }
+
+  // 确保引入的 icon 具有 .anticon
+  .anticon + span {
+    margin-left: 8px;
+  }
+}
+
+/* Start：button 的 type 样式 */
+.@{prefix}-primary {
+  color: #fff;
+  background: @primary-color;
+  border-color: @primary-color;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+
+  &:hover,
+  &:focus {
+    color: #fff;
+    background: @hover-color;
+  }
+
+  &:active {
+    background: @acitve-color;
+    border-color: @acitve-color;
+  }
+}
+
+.@{prefix}-dashed {
+  border-color: @dash-color;
+  border-style: dashed;
+}
+
+.@{prefix}-text {
+  background: 0 0;
+  border-color: transparent;
+  box-shadow: none;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: @default-color;
+    background: rgba(0, 0, 0, 0.018);
+    border-color: transparent;
+  }
+}
+
+.@{prefix}-link {
+  color: @primary-color;
+  background: 0 0;
+  border-color: transparent;
+  box-shadow: none;
+
+  &:hover,
+  &:focus {
+    border-color: transparent;
+  }
+}
+/* End：button 的 type 样式 */
+
+/* Start：button 的特殊样式 */
+
+// danger 样式
+
+@danger-hover-color: #ff7875;
+@danger-active-color: #d9363e;
+
+.@{prefix}-dangerous {
+  color: @danger-color;
+  background: #fff;
+  border-color: @danger-color;
+
+  &:hover,
+  &:focus {
+    color: @danger-hover-color;
+    border-color: @danger-hover-color;
+  }
+
+  &:active {
+    color: @danger-active-color;
+    border-color: @danger-active-color;
+  }
+
+  &.@{prefix}-primary {
+    color: #fff;
+    background: @danger-color;
+    border-color: @danger-color;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+
+    &:hover,
+    &:focus {
+      background: @danger-hover-color;
+      border-color: @danger-hover-color;
+    }
+
+    &:active {
+      background: @danger-active-color;
+      border-color: @danger-active-color;
+    }
+  }
+
+  &.@{prefix}-text {
+    background: 0 0;
+    border-color: transparent;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background: rgba(0, 0, 0, 0.018);
+    }
+  }
+
+  &.@{prefix}-link {
+    background: 0 0;
+    border-color: transparent;
+  }
+}
+
+// 仅有 icon
+.@{prefix}-icon-only {
+  width: @default-height;
+  height: @default-height;
+  padding: 2.4px 0;
+  font-size: 16px;
+  vertical-align: -1px;
+
+  // 特殊样式中重定义 size 的样式
+  &.@{prefix}-small {
+    width: @small-height;
+    height: @small-height;
+    padding: 0;
+    font-size: 14px;
+  }
+
+  &.@{prefix}-large {
+    width: @large-height;
+    height: @large-height;
+    padding: 4.9px 0;
+    font-size: 18px;
+  }
+}
+
+// disabled 样式
+.@{prefix}[disabled] {
+  color: rgba(0, 0, 0, 0.25);
+  background: #f5f5f5;
+  border-color: @dash-color;
+  text-shadow: none;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+.@{prefix}-text[disabled],
+.@{prefix}-link[disabled] {
+  color: rgba(0, 0, 0, 0.25);
+  background: 0 0;
+  border-color: transparent;
+}
+
+.@{prefix}-background-ghost[disabled] {
+  background: 0 0;
+}
+
+// loading 状态
+.@{prefix}-loading {
+  pointer-events: none;
+
+  &::before {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    left: -1px;
+    z-index: 1;
+    display: block;
+    background: #fff;
+    border-radius: inherit;
+    opacity: 0.35;
+    transition: opacity 0.2s;
+    content: '';
+    pointer-events: none;
+  }
+
+  > .@{prefix}-loading-btn {
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+}
+
+// ghost 样式
+.@{prefix}-background-ghost {
+  color: #fff;
+  background: 0 0;
+  border-color: #fff;
+
+  &.@{prefix}-primary {
+    border-color: @primary-color;
+    color: @primary-color;
+
+    &:hover,
+    &:focus {
+      color: @hover-color;
+      background: 0 0;
+      border-color: @hover-color;
+    }
+  }
+}
+
+// block 样式
+.@{prefix}-block {
+  width: 100%;
+}
+
+// 圆形按钮样式
+.@{prefix}-circle {
+  min-width: 32px;
+  padding-right: 0;
+  padding-left: 0;
+  text-align: center;
+  border-radius: 50%;
+
+  &.@{prefix}-large {
+    min-width: 40px;
+  }
+
+  &.@{prefix}-small {
+    min-width: 24px;
+  }
+}
+
+// 圆角样式
+.@{prefix}-round {
+  height: @default-height;
+  padding: 4px 16px;
+  font-size: 14px;
+  border-radius: 32px;
+
+  &.@{prefix}-large {
+    height: @large-height;
+    padding: 6.4px 20px;
+    font-size: 16px;
+    border-radius: 40px;
+  }
+
+  &.@{prefix}-small {
+    height: @small-height;
+    padding: 0 12px;
+    border-radius: 24px;
+  }
+}
+
+/* End: Button 的特殊样式 */
+
+/* Start：button 的 size 样式 */
+.@{prefix}-large {
+  height: @large-height;
+  padding: 6.4px 15px;
+  font-size: 16px;
+}
+
+.@{prefix}-small {
+  height: @small-height;
+  padding: 0 7px;
+}
+/* Start：button 的 size 样式 */
